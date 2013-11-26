@@ -7,9 +7,7 @@
 
 dataSource {
     pooled = true
-    driverClassName = "com.mysql.jdbc.Driver"
-    username = "Srii"
-    password = "48567"
+
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -19,11 +17,23 @@ hibernate {
 // environment specific settings
 environments {
     development {
+ /*       dataSource {
+            //dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            //url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            dbCreate = "update"
+            driverClassName = "com.mysql.jdbc.Driver"
+            username = "Srii"
+            password = "48567"
+            url = "jdbc:mysql://localhost/PurchaseDB"
+        }*/
         dataSource {
             //dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             //url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/PurchaseDB"
+            driverClassName = 'oracle.jdbc.driver.OracleDriver'
+            username = "PURCHASEDB"
+            password = "PURCHASEDB"
+            url = 'jdbc:oracle:thin:@localhost:1521:xe'
         }
     }
     test {
