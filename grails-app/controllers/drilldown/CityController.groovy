@@ -15,6 +15,10 @@ class CityController {
         params.max = Math.min(max ?: 10, 100)
         [purchaseOrderInstanceList: PurchaseOrder.list(params), purchaseOrderInstanceTotal: PurchaseOrder.count()]
     }
+    def explore(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [cityInstanceList: City.list(params), cityInstanceTotal: City.count()]
+    }
 
 
     def returnJson() {

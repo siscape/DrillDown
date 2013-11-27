@@ -13,29 +13,10 @@
     <title><g:message code="default.list.label" args="[entityName]" /></title>
 
     <r:require modules="drilldown_list"/>
+    <r:require modules="customSlider"/>
     <r:script>
         $(document).ready(function($){
-
-           // $(function() {
-
-            //});
-
-           /* $.ajax({
-                type: "POST",
-                url: "returnHTML",
-                dataType: 'html',
-                data: { max : 20 },
-                success: function(data) {
-                    $('#Products').append(data);
-                    $('#drilldown').dcDrilldown({
-                        speed       	: 'fast',
-                        showCount		: true
-                    });
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    debugger;
-                }
-            });*/
+           // volumeSlider();
 
             initData();
 
@@ -51,7 +32,7 @@
 <div id="dd-wrapper-0" class="wrap">
 
 
-          <div id="demo-container" style="overflow: hidden; width: 980px;" class="demo-dd demo-container">
+          <div id="demo-container" style="overflow: hidden; width: 1060px;" class="demo-dd demo-container">
               <div style="float: left; width: 960px;">
 
                   <ul id="drilldown">
@@ -71,11 +52,21 @@
 
                 </ul>
                   </div>
-              <div style="width: 20px; float: left;">
-
-                  <div id="slider" style="height: 400px;"></div>
+              <div id="day-selector" style="width: 100px; float: left;">
+%{--
+                  <div id='prev-day'>Previous</div>
+--}%
+                  <div id="slider" style="height: 400px; float: left;"></div>
+%{--
+                  <div id='next-day'>Next</div>
+--}%
 
               </div>
+              %{--<div id="day-selector" style="width: 100px; float: left;>
+                  <span class="tooltip"></span> <!-- Tooltip -->
+                  <div id="slider"></div> <!-- the Slider -->
+                  <span class="volume"></span> <!-- Volume -->
+              </div>--}%
 
         </div>
 

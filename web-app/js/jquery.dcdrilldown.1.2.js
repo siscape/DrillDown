@@ -20,7 +20,7 @@
         });
 
         mainList.data('listView', listView); //Use jQeary Data to set our list to the element as a conveniance.
-        load(25); //Load a 100 images!
+        load(10); //Load a 100 images!
 
 
         $('#demo-container ul').on('scroll', function() {
@@ -30,7 +30,7 @@
                 setTimeout(function() {
                     var spinner=$('.spinner');
                     if(onscreen(spinner,$(this)))
-                        load(25); //if we are at the page bottom add 250 more images!
+                        load(10); //if we are at the page bottom add 250 more images!
 
                     updateScheduled = false;
                 }, 500);
@@ -304,12 +304,15 @@
             if (getNewBreadcrumb == defaults.defaultText)  {
 
                 initScroll();
+               // initSlider();
                 $( "#slider" ).slider({
                     orientation:"vertical",
-                    value:100,
+                    value:10,
                     min: 0,
-                    max: 500,
-                    step: 50,
+                    max: 1000,
+                    step: 100,
+                    range: "min",
+                    animate: true,
                     slide: function( event, ui ) {
                         $( "#amount" ).val( "$" + ui.value );
                     }
@@ -317,6 +320,8 @@
                 $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
                 $( "#slider").parent().css('padding-top', $('#dd-header-0').height());
                 $( "#slider").height($('#Products').height());
+                $('#slider a').html("<div id='day-number'></div>");
+                $("#slider").find("#day-number").text(1);
             }
 
 			//$(activeLink).hide();
@@ -340,7 +345,6 @@
 			$('ul',$header).remove();
 			$('a',$header).remove();
 			$('>li:hidden', obj).show();
-			//$('a',obj).show();
 			var totalWidth = $(obj).outerWidth(true);
 			$('ul',obj).css('margin-right',-totalWidth+'px');
             updateHeader($header, defaults.defaultText);
@@ -364,9 +368,9 @@
             type: "POST",
             url: "returnHTML",
             dataType: 'html',
-            data: { max : 25},
+            data: { max : 12},
             success: function(data) {
-                prevNum+=25;
+                prevNum+=12;
                 mainList.empty();
                 mainList.append(data);
 
